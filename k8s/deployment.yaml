@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: kubernetes-spring
   labels:
-    app: kubernates-spring
-  name: kubernates-spring
+    app: kubernetes-spring
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: kubernates-spring
+      app: kubernetes-spring
   template:
     metadata:
       labels:
-        app: kubernates-spring
+        app: kubernetes-spring
     spec:
       containers:
-        - name: kubernates-spring
-          image: kubernates-spring
-          imagePullPolicy: Never
+        - name: kubernetes-spring
+          image: djuybu/kubernates-spring:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness
               port: 8080
-            initialDelaySeconds: 10
+            initialDelaySeconds: 20
             periodSeconds: 5
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
               port: 8080
-            initialDelaySeconds: 5
+            initialDelaySeconds: 20
             periodSeconds: 3
           volumeMounts:
             - name: config-volume
