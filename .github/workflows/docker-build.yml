@@ -20,7 +20,7 @@ jobs:
           java-version: '17'
 
       - name: Build Docker image using Spring Boot Buildpacks
-        run: mvn spring-boot:build-image
+        run: mvn -e spring-boot:build-image
 
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin

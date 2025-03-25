@@ -54,7 +54,6 @@
                 </executions>
                 <configuration>
                     <image>
-                        <builder>paketobuildpacks/builder:base</builder>
                         <name>djuybu/kubernates-spring:latest</name>
                     </image>
                 </configuration>
